@@ -29,7 +29,7 @@ import (
      "context"
      "fmt"
      "time"
-    )
+)
 
 func doSomething(ctx context.Context) {
     select {

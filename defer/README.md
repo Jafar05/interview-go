@@ -78,10 +78,10 @@ package main
 import "fmt"
 
 func main() {
-x := 10
-defer fmt.Println("Значение x:", x) // значение `x` фиксируется здесь
-x = 20
-fmt.Println("Обновленное значение x:", x)
+    x := 10
+    defer fmt.Println("Значение x:", x) // значение `x` фиксируется здесь
+    x = 20
+    fmt.Println("Обновленное значение x:", x)
 }
 ```
 #### Результат:

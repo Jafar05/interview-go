@@ -1,16 +1,24 @@
 package main
 
-import "fmt"
-
 func main() {
-	sl := make([]int, 0, 3)
 
-	sl = append(sl, 1, 2)
-	addSl(sl)
-
-	fmt.Println(sl)
 }
 
-func addSl(sl []int) {
-	sl = append(sl, 3)
+// На вход подается канал значения из которого нужно перекладывать в оба канала
+// Например если в канал записывается 1, 3, 5, то в канал a должно записаться 1, 3, 5 и канал b  должно записаться 1, 3, 5
+
+func tee(in <-chan int) (chan any, chan any) {
+	a := make(chan any, 1)
+	b := make(chan any, 1)
+
+	go func() {
+		defer close(a)
+		defer close(b)
+		for val := range in {
+			a <- val
+			b <- val
+		}
+	}()
+
+	return a, b
 }

@@ -3,10 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	src := []int{1, 2, 3, 4}
-	dst := make([]int, 5) // Целевой срез длиной 5
+	var m map[string]int // Неинициализированная мапа (nil)
 
-	copy(dst, src) // Копируем из src в dst
-	fmt.Println("Source:", src)
-	fmt.Println("Destination:", dst)
+	// Попытка вставить элемент в неинициализированную мапу
+	// Это приведет к панике!
+	fmt.Println(m["apple"])
+	m["apple"] = 5 // Паника: assignment to entry in nil map
+	fmt.Println(m) // Выводит: map[]
 }

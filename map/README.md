@@ -51,8 +51,9 @@ import "fmt"
 
 func main() {
     var m map[string]int // Неинициализированная мапа (nil)
-
-	fmt.Println(m["apple"]) // Возвратит zero value Значения мапы
+	
+    fmt.Println(m["apple"]) // Возвратит zero value Значения мапы
+	
     // Попытка вставить элемент в неинициализированную мапу
     // Это приведет к панике!
     // m["apple"] = 5  // Паника: assignment to entry in nil map

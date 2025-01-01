@@ -3,11 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	var m map[string]int // Неинициализированная мапа (nil)
+	a := [3]int{1, 2, 3}
+	b := [3]int{1, 2, 3}
+	c := [3]int{1, 2, 4}
 
-	// Попытка вставить элемент в неинициализированную мапу
-	// Это приведет к панике!
-	fmt.Println(m["apple"])
-	m["apple"] = 5 // Паника: assignment to entry in nil map
-	fmt.Println(m) // Выводит: map[]
+	fmt.Println(a == b) // true (все элементы равны)
+	fmt.Println(a == c) // false (различие в последнем элементе)
 }

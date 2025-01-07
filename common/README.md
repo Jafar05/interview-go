@@ -1,5 +1,8 @@
 ## В чем отличие протоколов TCP и UDP? В каком случае UDP предпочтительнее?
 
+
+**TCP** (Transmission Control Protocol) и **UDP** (User Datagram Protocol) — это транспортные протоколы для передачи данных в сетях.
+
 ### TCP (Transmission Control Protocol):
 - Протокол ориентирован на соединение.
 - Гарантирует доставку данных и их порядок.

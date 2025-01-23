@@ -9,7 +9,7 @@ func uniqRandn(n int) []int {
 	m := make(map[int]struct{})
 	for len(sl) < n {
 		s := rand.Int()
-		if _, ok := m[s] {
+		if _, ok := m[s]; ok {
 			continue
 		}
 

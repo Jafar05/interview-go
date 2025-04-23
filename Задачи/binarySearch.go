@@ -1,4 +1,4 @@
-package tasks
+package Задачи
 
 func BinarySearch(nums []int, target int) (int, bool) {
 	first, last := 0, len(nums)-1

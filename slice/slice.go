@@ -1,4 +1,4 @@
-package Слайсы
+package slice
 
 import "fmt"
 

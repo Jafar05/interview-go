@@ -1,11 +1,11 @@
-package Задачи
+package tasks
 
 import (
 	"fmt"
 	"sync"
 )
 
-func splitChanks(sl []int, chIn chan []int) {
+func splitChunks(sl []int, chIn chan []int) {
 	sizeChunks := 3
 	for start := 0; start < len(sl); start += sizeChunks {
 		end := start + sizeChunks
@@ -27,11 +27,11 @@ func workerpool(wg *sync.WaitGroup, chIn chan []int) {
 	}
 }
 
-func main() {
+func SplitChunksMain() {
 	sl := []int{1, 2, 3, 4, 5, 6, 7}
 
 	chIn := make(chan []int)
-	go splitChanks(sl, chIn)
+	go splitChunks(sl, chIn)
 
 	wg := &sync.WaitGroup{}
 	maxGo := 3

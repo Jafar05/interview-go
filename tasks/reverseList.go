@@ -1,4 +1,4 @@
-package Задачи
+package tasks
 
 import "fmt"
 

@@ -1,4 +1,4 @@
-package Задачи
+package tasks
 
 func Intersection(one, two []int) []int {
 	m := make(map[int]int)

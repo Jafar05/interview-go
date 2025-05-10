@@ -1,4 +1,4 @@
-package Задачи
+package tasks
 
 import (
 	"context"
@@ -73,7 +73,7 @@ func (rl *RateLimiterMiddleware) Middleware(next http.Handler) http.HandlerFunc 
 	})
 }
 
-func main() {
+func RateLimiterMiddlewareMain() {
 
 	rateLimiter := NewRateLimiterMiddleware(10, time.Minute)
 

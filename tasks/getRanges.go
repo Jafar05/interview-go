@@ -1,11 +1,11 @@
-package Задачи
+package tasks
 
 import (
 	"fmt"
 	"strconv"
 )
 
-func main() {
+func GetRangesMain() {
 	fmt.Println(getRanges([]int{0, 1, 2, 3, 4, 7, 8, 10})) // "0-4,7-8,10"
 	fmt.Println(getRanges([]int{4, 7, 10}))                // "4,7,10"
 	fmt.Println(getRanges([]int{2, 3, 8, 9}))

@@ -1,4 +1,4 @@
-package Задачи
+package tasks
 
 import (
 	"fmt"
@@ -24,13 +24,13 @@ func ImportPerm() {
 	perm(str, 0, len(str)-1)
 }
 
-func main() {
+func mainPerm() {
 	input := "abc"
 	ch := make(chan string)
 	wg := &sync.WaitGroup{}
 
 	wg.Add(1)
-	go worker(input, wg, ch)
+	go workerPerm(input, wg, ch)
 
 	go func() {
 		wg.Wait()
@@ -42,7 +42,7 @@ func main() {
 	}
 }
 
-func worker(str string, wg *sync.WaitGroup, ch chan<- string) {
+func workerPerm(str string, wg *sync.WaitGroup, ch chan<- string) {
 	defer wg.Done()
 	permute([]rune(str), 0, ch)
 }

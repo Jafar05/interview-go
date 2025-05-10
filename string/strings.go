@@ -1,4 +1,4 @@
-package Строки
+package string
 
 import (
 	"fmt"

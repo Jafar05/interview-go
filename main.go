@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(two_pointers.MaxArea([]int{1, 8, 6, 2, 5, 4, 8, 3, 7}))
+	fmt.Println(two_pointers.IsOneEditDistance("ab", "abc"))
 }

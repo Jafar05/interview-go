@@ -1,19 +1,21 @@
 package main
 
-import (
-	"fmt"
-	"interview/algorithms/linked_list"
-)
+import "fmt"
 
 func main() {
+	fmt.Println(twoSum([]int{2, 7, 11, 15}, 22))
+}
 
-	head := &linked_list.ListNodeMiddleNode{Val: 1}
-	head.Next = &linked_list.ListNodeMiddleNode{Val: 2}
-	head.Next.Next = &linked_list.ListNodeMiddleNode{Val: 3}
-	head.Next.Next.Next = &linked_list.ListNodeMiddleNode{Val: 4}
-	head.Next.Next.Next.Next = &linked_list.ListNodeMiddleNode{Val: 5}
+func twoSum(nums []int, target int) []int {
+	hash := make(map[int]int)
 
-	middle1 := linked_list.MiddleNode(head)
-	fmt.Print("Original list: ", middle1.Val)
+	for idx, val := range nums {
+		diff := target - val
+		if findNum, ok := hash[diff]; ok {
+			return []int{findNum, idx}
+		}
 
+		hash[val] = idx
+	}
+	return []int{-1, -1}
 }

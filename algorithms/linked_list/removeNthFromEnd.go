@@ -7,13 +7,15 @@ type ListNode struct {
 
 func RemoveNthFromEnd(head *ListNode, n int) *ListNode {
 	dummy := &ListNode{0, head}
-	fast, slow := dummy, dummy
-	for n > 0 {
+
+	fast := dummy
+	for i := 0; i < n+1; i++ {
 		fast = fast.Next
-		n--
 	}
-	for fast.Next != nil {
-		fast, slow = fast.Next, slow.Next
+	slow := dummy
+	for fast != nil {
+		fast = fast.Next
+		slow = slow.Next
 	}
 	slow.Next = slow.Next.Next
 	return dummy.Next

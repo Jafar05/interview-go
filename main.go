@@ -1,27 +1,34 @@
 package main
 
 import (
-	"sync"
+	"fmt"
+	"math/rand/v2"
+	"time"
 )
 
 func main() {
-	jobs := make(chan int)
-	res := make(chan int)
-	workerPool(10, square, jobs, res)
+	chat()
 }
 
-func workerPool(id int, f func(int) int, jobs chan int, result chan int) {
-	wg := &sync.WaitGroup{}
+func msg(ch chan string) {
+	message := []string{
+		"Hello",
+		"Hi",
+		"How are you",
+		"Fine",
+	}
 
-	wg.Add(1)
-	go func() {
-		for val := range jobs {
-			result <- f(val)
-		}
-	}()
-	wg.Wait()
+	for {
+		ch <- message[rand.IntN(len(message))]
+		time.Sleep(time.Second)
+	}
+	close(ch)
 }
 
-func square(num int) int {
-	return num * num
+func chat() {
+	ch := make(chan string)
+	go msg(ch)
+	for val := range ch {
+		fmt.Println(val)
+	}
 }

@@ -1,0 +1,141 @@
+Задача 1. Байты vs руны
+
+func main() {
+	s := "Привет"
+	fmt.Println(len(s))   // ?
+	fmt.Println(len([]rune(s))) // ?
+	printBytes(s)
+	printRunes(s)
+}
+
+func printBytes(s string) {
+	for i := 0; i < len(s); i++ {
+		fmt.Printf("%x ", s[i])
+	}
+	fmt.Println()
+}
+
+func printRunes(s string) {
+	for _, r := range s {
+		fmt.Printf("%c ", r)
+	}
+	fmt.Println()
+}
+
+---
+Задача 2. Срез по строке
+
+func main() {
+	s := "Привет"
+	sub := s[:4]
+	fmt.Println(sub)
+}
+
+---
+Задача 3. Модификация строки через []byte
+
+func main() {
+	s := "hello"
+	b := []byte(s)
+	b[0] = 'H'
+	s2 := string(b)
+	fmt.Println(s)
+	fmt.Println(s2)
+}
+
+
+---
+Задача 4. Конкатенация Unicode
+
+func main() {
+	s := "猫"
+	s2 := s + "🐱"
+	fmt.Println(s, len(s))
+	fmt.Println(s2, len(s2))
+}
+
+---
+Задача 5. Индексация по строке
+
+func main() {
+	s := "Привет"
+	fmt.Printf("%c\n", s[1])
+	fmt.Printf("%c\n", []rune(s)[1])
+}
+
+
+---
+Задача 6. range по строке
+
+func main() {
+	s := "Go語"
+	for i, r := range s {
+		fmt.Printf("%d: %c\n", i, r)
+	}
+}
+
+
+---
+Задача 7. Изменение через rune slice
+
+func main() {
+	s := "Привет"
+	r := []rune(s)
+	r[0] = 'З'
+	s2 := string(r)
+	fmt.Println(s)
+	fmt.Println(s2)
+}
+
+---
+Задача 8. Строки и append
+
+func main() {
+	s := "hi"
+	b := []byte(s)
+	b = append(b, '!')
+	fmt.Println(s)
+	fmt.Println(string(b))
+}
+
+---
+Задача 9. Строка с emoji
+
+func main() {
+	s := "🙂"
+	fmt.Println(len(s))
+	fmt.Println(len([]rune(s)))
+}
+
+
+---
+Задача 10. Копирование части строки
+
+func main() {
+	s := "abcdef"
+	r := []rune(s)
+	sub := string(r[2:5])
+	fmt.Println(sub)
+}
+
+
+---
+Задача 11
+func main() {
+	str := "ddЯЙ漢"
+
+	//Так как Кириллица и иероглифы имеют больше байт, len выводит > 5
+	fmt.Println("Длина через len", len(str))                                   // > 5
+	fmt.Println("Длина через RuneCountInStrings", utf8.RuneCountInString(str)) // 5
+
+	str2 := "G👳‍o"
+	//for i := 0; i < len(str); i++ {
+	//	fmt.Printf("%c\n", str2[i]) // выведет "G", "непонятные символы", "o"
+	//}
+
+	// Исправленный вариант
+	for _, val := range str2 {
+		fmt.Println(val)
+	}
+
+}

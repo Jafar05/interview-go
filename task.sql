@@ -1,30 +1,37 @@
-create table cities (
-    id serial primary key,
-    name text
-);
-
-insert into cities
-    (name)
-values
-    ('Москва'),
-    ('Санкт-Петербург'),
-    ('Краснодар');
+select * from departments;
+select * from employees;
+select * from projects;
+select * from employee_projects;
 
 
-create table users (
-    id serial primary key,
-    name text not null ,
-    city_id int not null references cities (id)
-);
+
+select
+    p.name,
+    sum(e.salary) as total_salary_cost
+from
+    projects p
+join
+        employee_projects ep on p.id = ep.project_id
+join
+        employees e on ep.employee_id = e.id
+group by
+    p.name, p.id
+order by
+    total_salary_cost desc
+limit 1;
 
 
-insert into users
-(name, city_id)
-values
-    ('Иван', 1),
-    ('Анна', 1),
-    ('Олег', 1);
-update users set city_id = 2 where name = 'Олег';
-
-select * from cities;
-select * from users;
+SELECT
+    p.name,
+    SUM(e.salary) AS total_salary_cost
+FROM
+    projects p
+JOIN
+        employee_projects ep ON p.id = ep.project_id
+JOIN
+        employees e ON ep.employee_id = e.id
+GROUP BY
+    p.id, p.name
+ORDER BY
+    total_salary_cost DESC
+LIMIT 1;
